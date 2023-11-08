@@ -9,7 +9,27 @@ def main():
     start = True
     while start:
         user_input_menu = menu()
-        print(user_input_menu)
+        if user_input_menu == 1:
+            # list pakuri
+            pass
+        elif user_input_menu == 2:
+            # show pakuri
+            pass
+        elif user_input_menu == 3:
+            # add pakuri
+            pass
+        elif user_input_menu == 4:
+            # evolve pakuri
+            pass
+        elif user_input_menu == 5:
+            # sort pakuri
+            pass
+        elif user_input_menu == 6:
+            # quit
+            start = False
+        else:
+            # error message
+            pass
 
 
 # menu function
