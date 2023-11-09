@@ -1,35 +1,62 @@
 # main driver program
+# imports
+from pakudex import Pakudex
+
+
 # main function
 def main():
     # print the welcome message
     print("Welcome to Pakudex: Tracker Extraordinare!")
     # prompt for capacity / display it
-    capacity = input("Enter max capacity of the Pakudex: ")
+    capacity = int(input("Enter max capacity of the Pakudex: "))
     print(f"The Pakudex can hold {capacity} species of Pakuri.")
+    pakudex = Pakudex(capacity)
     start = True
     while start:
         user_input_menu = menu()
         if user_input_menu == 1:
-            # list pakuri
-            pass
+            if not pakudex.species_name_list:
+                print("No Pakuri in Pakudex yet!\n")
+            else:
+                number = 1
+                for name in pakudex.species_name_list:
+                    print(f"{number}: {name}")
+                    number += 1
+                print("\n")
         elif user_input_menu == 2:
-            # show pakuri
-            pass
+            species_user_inp = input("Enter the name of the species to display: ")
+            stats = pakudex.get_stats(species_user_inp)
+            if stats is None:
+                print("Error! No such Pakuri!\n")
+            else:
+                print(f"Species: {species_user_inp}")
+                print(f"Attack: {stats[0]}")
+                print(f"Defense: {stats[1]}")
+                print(f"Speed: {stats[2]}\n")
         elif user_input_menu == 3:
-            # add pakuri
-            pass
+            species_to_add = input("Enter the name of the species to add: ")
+            decider_val = pakudex.add_pakuri(species_to_add)
+            if decider_val is False and pakudex.species_stored_count >= capacity:
+                print("Error: Pakudex is full!\n")
+            elif decider_val is False:
+                print("Error: Pakudex already contains this species!\n")
+            if decider_val:
+                print(f"Pakuri species {species_to_add} successfully added!\n")
         elif user_input_menu == 4:
-            # evolve pakuri
-            pass
+            species_to_evolve = input("Enter the name of species to evolve: ")
+            evolver_val = pakudex.evolve_species(species_to_evolve)
+            if not evolver_val:
+                print("Error: No such Pakuri!\n")
+            else:
+                print(f"{species_to_evolve} has evolved!\n")
         elif user_input_menu == 5:
-            # sort pakuri
+            pakudex.sort_pakuri()
+            print("Pakuri      have      been      sorted\n")
             pass
         elif user_input_menu == 6:
-            # quit
             start = False
         else:
-            # error message
-            pass
+            print("Error: not a valid input!")
 
 
 # menu function
