@@ -9,7 +9,7 @@ def main():
     print("Welcome to Pakudex: Tracker Extraordinare!")
     # prompt for capacity / display it
     capacity = int(input("Enter max capacity of the Pakudex: "))
-    print(f"The Pakudex can hold {capacity} species of Pakuri.")
+    print(f"The Pakudex can hold {capacity} species of Pakuri.\n")
     pakudex = Pakudex(capacity)
     start = True
     while start:
@@ -19,6 +19,7 @@ def main():
                 print("No Pakuri in Pakudex yet!\n")
             else:
                 number = 1
+                print("Pakuri in Pakudex:")
                 for name in pakudex.species_name_list:
                     print(f"{number}: {name}")
                     number += 1
@@ -34,14 +35,23 @@ def main():
                 print(f"Defense: {stats[1]}")
                 print(f"Speed: {stats[2]}\n")
         elif user_input_menu == 3:
-            species_to_add = input("Enter the name of the species to add: ")
-            decider_val = pakudex.add_pakuri(species_to_add)
-            if decider_val is False and pakudex.species_stored_count >= capacity:
-                print("Error: Pakudex is full!\n")
-            elif decider_val is False:
-                print("Error: Pakudex already contains this species!\n")
-            if decider_val:
-                print(f"Pakuri species {species_to_add} successfully added!\n")
+            if pakudex.species_stored_count >= capacity:
+                print("Error: Pakudex is full\n")
+            else:
+                species_to_add = input("Enter the name of the species to add: ")
+                decider_val = pakudex.add_pakuri(species_to_add)
+                if decider_val:
+                    print(f"Pakuri species {species_to_add} successfully added!\n")
+                else:
+                    print("Error: Pakudex already contains this species!\n")
+            # species_to_add = input("Enter the name of the species to add: ")
+            # decider_val = pakudex.add_pakuri(species_to_add)
+            # if decider_val is False and pakudex.species_stored_count >= capacity:
+            #     print("Error: Pakudex is full!\n")
+            # elif decider_val is False:
+            #     print("Error: Pakudex already contains this species!\n")
+            # if decider_val:
+            #     print(f"Pakuri species {species_to_add} successfully added!\n")
         elif user_input_menu == 4:
             species_to_evolve = input("Enter the name of species to evolve: ")
             evolver_val = pakudex.evolve_species(species_to_evolve)
