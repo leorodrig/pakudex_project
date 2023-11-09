@@ -6,7 +6,7 @@ from pakudex import Pakudex
 # main function
 def main():
     # print the welcome message
-    print("Welcome to Pakudex: Tracker Extraordinare!")
+    print("Welcome to Pakudex: Tracker Extraordinaire!")
     # prompt for capacity / display it
     capacity = int(input("Enter max capacity of the Pakudex: "))
     print(f"The Pakudex can hold {capacity} species of Pakuri.\n")
@@ -44,14 +44,6 @@ def main():
                     print(f"Pakuri species {species_to_add} successfully added!\n")
                 else:
                     print("Error: Pakudex already contains this species!\n")
-            # species_to_add = input("Enter the name of the species to add: ")
-            # decider_val = pakudex.add_pakuri(species_to_add)
-            # if decider_val is False and pakudex.species_stored_count >= capacity:
-            #     print("Error: Pakudex is full!\n")
-            # elif decider_val is False:
-            #     print("Error: Pakudex already contains this species!\n")
-            # if decider_val:
-            #     print(f"Pakuri species {species_to_add} successfully added!\n")
         elif user_input_menu == 4:
             species_to_evolve = input("Enter the name of species to evolve: ")
             evolver_val = pakudex.evolve_species(species_to_evolve)
@@ -61,12 +53,12 @@ def main():
                 print(f"{species_to_evolve} has evolved!\n")
         elif user_input_menu == 5:
             pakudex.sort_pakuri()
-            print("Pakuri      have      been      sorted\n")
+            print("Pakuri have been sorted\n")
             pass
         elif user_input_menu == 6:
             start = False
         else:
-            print("Error: not a valid input!")
+            print("Unrecognized menu selection!")
 
 
 # menu function
