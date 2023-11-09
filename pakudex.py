@@ -51,8 +51,9 @@ class Pakudex:
         if self.species_stored_count >= self.capacity:
             return False
         new_species = Pakuri(species)
+        name_new_species = new_species.get_species()
         self.pakudex_obj_list.append(new_species)
-        self.species_name_list.append(new_species)
+        self.species_name_list.append(name_new_species)
         self.species_stored_count += 1
         return True
 
