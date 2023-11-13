@@ -36,7 +36,7 @@ def main():
                 print("No Pakuri in Pakudex yet!\n")
             else:
                 number = 1
-                print("Pakuri in Pakudex:")
+                print("Pakuri In Pakudex:")
                 for name in pakudex.species_name_list:
                     print(f"{number}: {name}")
                     number += 1
@@ -46,7 +46,7 @@ def main():
             species_user_inp = input("Enter the name of the species to display: ")
             stats = pakudex.get_stats(species_user_inp)
             if stats is None:
-                print("Error! No such Pakuri!\n")
+                print("Error: No such Pakuri!\n")
             else:
                 print(f"Species: {species_user_inp}")
                 print(f"Attack: {stats[0]}")
@@ -55,7 +55,7 @@ def main():
         # menu option 3: add species to the Pakudex
         elif user_input_menu == "3":
             if pakudex.species_stored_count >= capacity:
-                print("Error: Pakudex is full\n")
+                print("Error: Pakudex is full!\n")
             else:
                 species_to_add = input("Enter the name of the species to add: ")
                 decider_val = pakudex.add_pakuri(species_to_add)
@@ -74,14 +74,14 @@ def main():
         # menu option 5: sort pakuri using the sort_pakuri method
         elif user_input_menu == "5":
             pakudex.sort_pakuri()
-            print("Pakuri have been sorted\n")
+            print("Pakuri have been sorted!\n")
             pass
         # menu option 6: quit the pakudex
         elif user_input_menu == "6":
             print("Thanks for using Pakudex! Bye!")
             start = False
         else:
-            print("Unrecognized menu selection!")
+            print("Unrecognized menu selection!\n")
 
 
 # menu function
